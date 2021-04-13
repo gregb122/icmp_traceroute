@@ -38,9 +38,10 @@ int8_t send_with_ttl(int _sockfd, struct icmp _header, struct sockaddr_in _recip
     sizeof(_recipient)
     );
     if (bytes_sent >= 0){
-        return EXIT_FAILURE;
+        return EXIT_SUCCESS;
     }
-    return EXIT_SUCCESS;
+    fprintf(stderr, "Error sending a ping\n");
+    return EXIT_FAILURE;
 }
 
 int8_t send_ping(int _sockfd, struct sockaddr_in _recipient,  int _ttl, int _seq_number){
